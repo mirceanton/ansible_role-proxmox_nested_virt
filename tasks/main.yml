@@ -1,0 +1,9 @@
+---
+- name: Enable nested virtualization
+  ansible.builtin.lineinfile:
+    path: "/etc/modprobe.d/kvm-{{ cpu_type }}.conf"
+    line: "options kvm-{{ cpu_type }} nested=1"
+    create: true
+    mode: u=rw,g=r,o=r
+  notify:
+    - Reboot
