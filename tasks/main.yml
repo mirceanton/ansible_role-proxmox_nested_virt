@@ -1,2 +1,8 @@
 ---
-# tasks file for proxmox-nested-virt/
+- name: Enable nested virtualization
+  lineinfile:
+    path: "/etc/modprobe.d/kvm-{{ cpu_type }}.conf"
+    line: "options kvm-{{ cpu_type }} nested=1"
+    create: true
+  notify:
+    - Reboot
