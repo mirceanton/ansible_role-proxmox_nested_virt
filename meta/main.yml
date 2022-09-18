@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: proxmox-nested-virt
+  role_name: proxmox_nested_virt
 
   author: Mircea-Pavel ANTON
   description: An Ansible role that enables nested virtualization on a Proxmox host.
@@ -8,8 +8,8 @@ galaxy_info:
   issue_tracker_url: https://github.com/Amir-Homelab/ansible-role_proxmox-nested-virt/issues
 
   license: license (MIT)
-
-  min_ansible_version: 2.1
+  standalone: true
+  min_ansible_version: "2.1"
 
   platforms:
     - name: Proxmox VE
@@ -19,7 +19,7 @@ galaxy_info:
         - 6.4
 
   galaxy_tags:
-    - Proxmox
-    - Virtualization
+    - proxmox
+    - virtualization
 
 dependencies: []
