@@ -11,9 +11,9 @@ N/A
 Role Variables
 --------------
 
-|  Variable  |   Default   |              Description               |
-| :--------: | :---------: | :------------------------------------: |
-| `cpu_type` | `UNDEFINED` | The CPU manufacturer: `intel` or `amd` |
+|            Variable            |  Type  |   Default   |              Description               |
+| :----------------------------: | :----: | :---------: | :------------------------------------: |
+| `proxmox_nested_virt_cpu_type` | string | `UNDEFINED` | The CPU manufacturer: `intel` or `amd` |
 
 Dependencies
 ------------
@@ -31,7 +31,7 @@ Example Playbook
 roles:
     - role: mirceanton.proxmox_nested_virt
       vars:
-        cpu_type: intel
+        proxmox_nested_virt_cpu_type: intel
 ```
 
 License
