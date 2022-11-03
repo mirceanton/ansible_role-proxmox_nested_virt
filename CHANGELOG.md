@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.2
+
+* Add functionality to automatically detect cpu type.
+* Add variable to override auto-detected cpu type.
+
 ## v1.0.1
 
 * Update meta and docs.
