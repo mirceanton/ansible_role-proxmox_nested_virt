@@ -11,9 +11,9 @@ N/A
 Role Variables
 --------------
 
-|            Variable            |  Type  |   Default   |              Description               |
-| :----------------------------: | :----: | :---------: | :------------------------------------: |
-| `proxmox_nested_virt_cpu_type` | string | `UNDEFINED` | The CPU manufacturer: `intel` or `amd` |
+|              Variable              |  Type  |                          Description                          |
+| :--------------------------------: | :----: | :-----------------------------------------------------------: |
+| `proxmox_nested_virt_cpu_override` | string | Override the auto-detected CPU manufacturer: `intel` or `amd` |
 
 Dependencies
 ------------
@@ -25,13 +25,14 @@ Example Playbook
 
 ``` yaml
 ---
-- hosts: all
+- name: Enable nested virtualization on all PVE nodes
+  hosts: pve
   remote_user: root
 
-roles:
+  roles:
     - role: mirceanton.proxmox_nested_virt
       vars:
-        proxmox_nested_virt_cpu_type: intel
+        proxmox_nested_virt_cpu_override: intel
 ```
 
 License
