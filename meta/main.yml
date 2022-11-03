@@ -20,6 +20,5 @@ galaxy_info:
 
   galaxy_tags:
     - proxmox
-    - virtualization
 
 dependencies: []

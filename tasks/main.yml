@@ -1,9 +1,21 @@
 ---
+- name: Dynamically set cmdline string based on CPU type
+  when: proxmox_nested_virt_cpu_override is not defined
+  block:
+    - name: Check CPU Type
+      ansible.builtin.shell: cat /proc/cpuinfo | grep -q "GenuineIntel"
+      changed_when: false
+      failed_when: false
+      register: __is_intel_cpu
+
+    - name: Set cmdline string
+      ansible.builtin.set_fact:
+        __cpu: "{{ 'intel' if __is_intel_cpu.rc == 0 else 'amd' }}"
+
 - name: Enable nested virtualization
   ansible.builtin.lineinfile:
-    path: "/etc/modprobe.d/kvm-{{ proxmox_nested_virt_cpu_type }}.conf"
-    line: "options kvm-{{ proxmox_nested_virt_cpu_type }} nested=1"
+    path: "/etc/modprobe.d/kvm.conf"
+    line: "options kvm-{{ __cpu | default(proxmox_nested_virt_cpu_override) }} nested=1"
     create: true
     mode: u=rw,g=r,o=r
-  notify:
-    - Reboot
+  notify: Reboot
